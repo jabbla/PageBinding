@@ -1,0 +1,19 @@
+{
+    "name": "Page Binding",
+    "manifest_version": 2,
+    "version": "1.0.0",
+    "description": "keyboard shortcut for page",
+    "icons": {
+        "16": "./images/icon.16.png",
+        "48": "./images/icon.48.png",
+        "128": "./images/icon.128.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "16": "./images/icon.16.png",
+            "32": "./images/icon.32.png"
+        },
+        "default_title": "Page Binding",
+        "default_popup": "./index.html"
+    }
+}
