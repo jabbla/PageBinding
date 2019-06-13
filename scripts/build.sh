@@ -1,4 +1,4 @@
 #!/bin/sh
 cd ./src/app
 yarn build
-cp -r ./build/ ../../dist/app
+cp -r ./build ../../dist
