@@ -1,3 +1,3 @@
 #!/bin/sh
-cd ./src/app
+cd ./src/popup
 yarn eject

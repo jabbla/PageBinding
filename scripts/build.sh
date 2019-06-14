@@ -1,4 +1,4 @@
 #!/bin/sh
-cd ./src/app
+cd ./src/popup
 yarn build
 cp -r ./build ../../dist

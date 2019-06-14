@@ -15,5 +15,8 @@
         },
         "default_title": "Page Binding",
         "default_popup": "./build/index.html"
-    }
+    },
+    "background": {
+        "scripts": []
+    }    
 }
