@@ -9,8 +9,3 @@ try {
 }catch(err) {
     console.error('build.sh 脚本运行失败');
 }
-
-/**构建background */
-const BackgroundConfig = require('../src/background/webpack.config.js');
-console.log(BackgroundConfig);
-webpack(BackgroundConfig);
