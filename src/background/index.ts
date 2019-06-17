@@ -1,19 +1,6 @@
 import b from './b';
+import Router from './routers/index';
 
-/**
- * 新建Binding Item
- */
-interface ShortCut {
-    keyboard: string[],
-    name: string,
-    url: string
-};
-
-
-
-function test1(a: string){
-    console.log(a);
-    console.log(b);
-}
-
-test1('1');
+chorme.runtime.onMessage.addListener((message: any, callback: Function) => {
+    Router(message);
+});
