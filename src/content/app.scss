@@ -1,0 +1,13 @@
+@import '~antd/dist/antd.css';
+
+.m-app-wrapper {
+    
+}
+
+.m-app {
+    .m-shortcut-list-modal {
+        .ant-modal-body {
+            padding-bottom: 0px;
+        }        
+    }
+}

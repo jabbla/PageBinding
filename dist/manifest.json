@@ -17,6 +17,24 @@
         "default_popup": "./build/index.html"
     },
     "background": {
-        "scripts": []
-    }    
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "permissions": [
+        "storage"
+    ],
+    "commands": {
+        "view-shortcut-list": {
+            "suggested_key": {
+                "default": "Alt+Shift+B",
+                "mac": "Command+Shift+L"
+            },
+            "description": "view list"
+        }
+    }
 }

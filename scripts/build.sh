@@ -4,3 +4,5 @@ yarn build
 cp -r ./build ../../dist
 cd ../background
 npx webpack
+cd ../content
+npx webpack

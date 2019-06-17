@@ -1,5 +1,6 @@
 import { Message, Routers, Router } from '../interfaces';
 import create from './create';
+import get from './get';
 
 const routers: Routers = {
     create
