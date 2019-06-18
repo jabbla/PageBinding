@@ -10,6 +10,7 @@ function App() {
             url: 'https://github.com'
         }
     ]);
+    let [chromeMsgInitialed, setChromeInit] = useState(false);
     let [modalVisible, setVisible] = useState(true);
     const columns = [
         {
@@ -38,11 +39,21 @@ function App() {
     };
 
     /**
+     * 初始化时，添加快捷键监听
+     */
+    useEffect(() => {
+        chrome.runtime.onMessage.addListener((req: any) => {
+            setVisible(true);
+        });
+        setChromeInit(true);
+    }, [chromeMsgInitialed]);
+    
+    /**
      * 在每次重新渲染的时候获取数据
      */
     useEffect(() => {
         getList().then(setData);
-    });
+    })
 
     return (
         <div className="m-app">

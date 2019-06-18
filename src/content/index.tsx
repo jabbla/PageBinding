@@ -19,10 +19,3 @@ ReactDom.render(
     <App/>,
     AppWraper
 );
-
-/**
- * 监听消息
- */
-chrome.runtime.onMessage.addListener((req: any) => {
-    console.log(req);
-});

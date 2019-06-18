@@ -29,12 +29,12 @@
         "storage"
     ],
     "commands": {
-        "view-shortcut-list": {
+        "toggle-feature-foo": {
             "suggested_key": {
-                "default": "Alt+Shift+B",
-                "mac": "Command+Shift+L"
+              "default": "Ctrl+Shift+Y",
+              "mac": "Command+Shift+Y"
             },
-            "description": "view list"
+            "description": "Toggle feature foo"
         }
     }
 }
