@@ -1,13 +1,11 @@
-@import '~antd/dist/antd.css';
-
-.m-app-wrapper {
-    
-}
-
-.m-app {
-    .m-shortcut-list-modal {
-        .ant-modal-body {
-            padding-bottom: 0px;
-        }        
+.m-shortcut-list-modal {
+    .ant-modal-body {
+        padding: 10px;
+        padding-top: 0px;
+    }
+    .m-shortcut-list {
+        table {
+            table-layout: fixed;
+        }
     }
 }

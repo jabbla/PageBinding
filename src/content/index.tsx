@@ -2,16 +2,15 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import App from './App';
-import './app.scss';
-
 
 /**
  * 在body标签下创建一个新的节点，并设置样式
  */
 const AppWraper = document.createElement('div');
 AppWraper.classList.add('m-app-wrapper');
-document.querySelector('body').appendChild(AppWraper);
 
+const Body = document.querySelector('body');
+Body.appendChild(AppWraper);
 /**
  * 将React App插入新的节点
  */

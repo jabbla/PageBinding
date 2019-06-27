@@ -301,21 +301,21 @@ module.exports = function(webpackEnv) {
 
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
-        {
-          test: /\.(js|mjs|jsx|ts|tsx)$/,
-          enforce: 'pre',
-          use: [
-            {
-              options: {
-                formatter: require.resolve('react-dev-utils/eslintFormatter'),
-                eslintPath: require.resolve('eslint'),
+        // {
+        //   test: /\.(js|mjs|jsx|ts|tsx)$/,
+        //   enforce: 'pre',
+        //   use: [
+        //     {
+        //       options: {
+        //         formatter: require.resolve('react-dev-utils/eslintFormatter'),
+        //         eslintPath: require.resolve('eslint'),
                 
-              },
-              loader: require.resolve('eslint-loader'),
-            },
-          ],
-          include: paths.appSrc,
-        },
+        //       },
+        //       loader: require.resolve('eslint-loader'),
+        //     },
+        //   ],
+        //   include: paths.appSrc,
+        // },
         {
           // "oneOf" will traverse all following loaders until one will
           // match the requirements. When no loader matches it will fall
@@ -335,34 +335,34 @@ module.exports = function(webpackEnv) {
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
-              test: /\.(js|mjs|jsx|ts|tsx)$/,
+              test: /\.(ts|tsx)$/,
               include: paths.appSrc,
-              loader: require.resolve('babel-loader'),
-              options: {
-                customize: require.resolve(
-                  'babel-preset-react-app/webpack-overrides'
-                ),
+              loader: require.resolve('awesome-typescript-loader'),
+              // options: {
+              //   customize: require.resolve(
+              //     'babel-preset-react-app/webpack-overrides'
+              //   ),
                 
-                plugins: [
-                  ["import", { "libraryName": "antd", "style": "css" }],
-                  [
-                    require.resolve('babel-plugin-named-asset-import'),
-                    {
-                      loaderMap: {
-                        svg: {
-                          ReactComponent: '@svgr/webpack?-svgo,+ref![path]',
-                        },
-                      },
-                    },
-                  ],
-                ],
-                // This is a feature of `babel-loader` for webpack (not Babel itself).
-                // It enables caching results in ./node_modules/.cache/babel-loader/
-                // directory for faster rebuilds.
-                cacheDirectory: true,
-                cacheCompression: isEnvProduction,
-                compact: isEnvProduction,
-              },
+              //   plugins: [
+              //     ["import", { "libraryName": "antd", "style": "css" }],
+              //     [
+              //       require.resolve('babel-plugin-named-asset-import'),
+              //       {
+              //         loaderMap: {
+              //           svg: {
+              //             ReactComponent: '@svgr/webpack?-svgo,+ref![path]',
+              //           },
+              //         },
+              //       },
+              //     ],
+              //   ],
+              //   // This is a feature of `babel-loader` for webpack (not Babel itself).
+              //   // It enables caching results in ./node_modules/.cache/babel-loader/
+              //   // directory for faster rebuilds.
+              //   cacheDirectory: true,
+              //   cacheCompression: isEnvProduction,
+              //   compact: isEnvProduction,
+              // },
             },
             // Process any JS outside of the app with Babel.
             // Unlike the application JS, we only compile the standard ES features.
