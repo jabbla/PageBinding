@@ -1,5 +1,7 @@
 #!/bin/sh
-cd ./src/popup
+cd ./dist
+rm -rf build
+cd ../src/popup
 yarn build
 cp -r ./build ../../dist
 cd ../background

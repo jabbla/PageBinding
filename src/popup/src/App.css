@@ -1,14 +1,17 @@
-@import '~antd/dist/antd.css';
-
 body {
-  background: rgba(0, 0, 0, 0.6);
+  background: #a0a2a2;
 }
 
 .u-menu-option {
+  width: 100%;
   color: white;
+  margin: 2px 0;
 }
 
 .App {
+  width: 150px;
+  border: 5px solid white;
+  padding: 5px 0;
   text-align: center;
 }
 

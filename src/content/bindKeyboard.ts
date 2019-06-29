@@ -7,7 +7,7 @@ interface KeyboardMap {
 const keyboardMap: KeyboardMap = {};
 
 function makeListener(info: Binding) {
-    return keyboardMap[info.name] = () => {
+    return keyboardMap[info.shortcut] = () => {
         window.open(info.url);
     };
 }
@@ -25,7 +25,7 @@ export const bindSingleKeyboard = (info: Binding) => {
 };
 
 export const unbindKeyboard = (info: Binding) => {
-    keyboard.unbind(info.shortcut, keyboardMap[info.name]);
+    keyboard.unbind(info.shortcut, keyboardMap[info.shortcut]);
     delete keyboardMap[info.name];
 };
 

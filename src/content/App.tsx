@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Table, Modal, Form, Input, Divider, Popconfirm } from 'antd';
+import { Table, Modal, Form, Input, Divider, message } from 'antd';
 import { getList, creatBinding, deleteBinding, modifyBinding } from './API';
 import { tableColumns } from './config';
 import { MESSAGE_ACTIONS } from '../config';
@@ -40,9 +40,18 @@ function ViewModal(options: any) {
     let [data, setData] = useState([]);
     let { onCancelModal, setVisible, visible } = useModalVisible();
 
+    const setList = () => {
+        return getList().then((res: Binding[]) => {
+            setData(res);
+            bindKeyboard(res);
+        });
+    };
+
     useChromeCommandListen((req: any) => {
         if(req.type === MESSAGE_ACTIONS.VIEW_BIND.type){
-            setVisible(true);
+            setList().then(() => {
+                setVisible(true);
+            });
         }
     });
 
@@ -50,6 +59,7 @@ function ViewModal(options: any) {
         deleteBinding(data[index]).then(() => {
             unbindKeyboard(data[index]);
             setData(data.filter((item, index1) => index1 !== index));
+            message.success('删除成功');
         });
     };
 
@@ -83,11 +93,12 @@ function ViewModal(options: any) {
             )(item),
             data
         );
-        
+
         modifyBinding(data[index], newData[index]);
         bindSingleKeyboard(newData[index]);
         unbindKeyboard(data[index]);
         setData(newData);
+        message.success('保存成功');
     };
 
     const changeFieldValue = (column: any, index: number) => (e: any) => setData(R.adjust(
@@ -132,13 +143,10 @@ function ViewModal(options: any) {
      * 在每次重新渲染的时候获取数据
      */
     useEffect(() => {
-        getList().then((res: Binding[]) => {
-            setData(res);
-            bindKeyboard(res);
-        });
+        setList();
     }, [data.length]);
 
-    const getContainer = (modal: React.ReactInstance) => {
+    const getContainer = () => {
         return modalContainer.current;
     };
 
@@ -185,9 +193,19 @@ function NewModal(options: any) {
     };
 
     const onConfirmNew = () => {
-        creatBinding({ url, name, shortcut }).then(() => {
+        const info = { url, name, shortcut };
+        creatBinding(info).then(() => {
             setVisible(false);
+            bindSingleKeyboard(info);
+            resetModal();
+            message.success('创建成功');
         });
+    };
+
+    const resetModal = () => {
+        setUrl('');
+        setShortCut('');
+        setName('');
     };
 
     const makeOnChange = (field: any) => (e: any) => {
@@ -246,6 +264,10 @@ function NewModal(options: any) {
 function App(props: any) {
     const rootElement = useRef(null);
     const emptyEventHandler = () => {};
+
+    message.config({
+        getContainer: () => rootElement.current
+    });
 
     return (
         <root.div className="m-app">

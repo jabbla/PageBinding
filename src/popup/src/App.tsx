@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button } from './components/button';
 import { MESSAGE_ACTIONS } from '../../config';
 import { sendMessageToCurrentTab } from '../../utils/index';
 import './App.css';
@@ -13,33 +13,28 @@ const App: React.FC = () => {
         sendMessageToCurrentTab(MESSAGE_ACTIONS.VIEW_BIND);
     };
 
-    return (
+    const onHelp = () => {
+        console.log('help');
+    };
+    return (    
         <div className="App">
             <Button
-                icon="plus-circle"
                 className="u-menu-option"
-                type="link"
                 onClick={onNew}
-                block
             >
-                新建
+                新 建
             </Button>
             <Button
-                icon="ordered-list"
                 className="u-menu-option"
-                type="link"
                 onClick={onView}
-                block
             >
-                查看
+                查 看
             </Button>
             <Button
-                icon="question-circle"
                 className="u-menu-option"
-                type="link"
-                block
+                onClick={onHelp}
             >
-                帮助
+                帮 助
             </Button>
         </div>
     );

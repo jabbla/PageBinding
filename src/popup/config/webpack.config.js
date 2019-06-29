@@ -25,6 +25,7 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -337,7 +338,7 @@ module.exports = function(webpackEnv) {
             {
               test: /\.(ts|tsx)$/,
               include: paths.appSrc,
-              loader: require.resolve('awesome-typescript-loader'),
+              loader: 'babel-loader!awesome-typescript-loader',
               // options: {
               //   customize: require.resolve(
               //     'babel-preset-react-app/webpack-overrides'
@@ -402,7 +403,7 @@ module.exports = function(webpackEnv) {
               exclude: cssModuleRegex,
               use: getStyleLoaders({
                 importLoaders: 1,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
+                sourceMap: false,
               }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
