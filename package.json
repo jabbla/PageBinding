@@ -19,7 +19,7 @@
     "csstype": "^2.6.5",
     "enumjs": "^0.0.1",
     "keyboardjs": "^2.5.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "ramda": "^0.26.1",
     "raw-loader": "^3.0.0",
     "react": "^16.8.6",
